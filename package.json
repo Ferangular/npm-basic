@@ -1,0 +1,28 @@
+{
+  "name": "string-utilities-plus",
+  "version": "1.0.0",
+  "description": "Una librería educativa de utilidades de strings para aprender a crear paquetes npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ferangular/npm-basic.git"
+  },
+  "keywords": [
+    "string",
+    "utilities",
+    "educational",
+    "npm",
+    "nodejs",
+    "javascript",
+    "learning"
+  ],
+  "author": "Fer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ferangular/npm-basic/issues"
+  },
+  "homepage": "https://github.com/Ferangular/npm-basic#readme"
+}

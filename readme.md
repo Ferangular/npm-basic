@@ -108,6 +108,31 @@ Para eliminar el enlace:
 npm unlink nombre-del-paquete
 ```
 
+### Prueba del paquete con Node.js REPL
+Para probar tu paquete localmente usando la consola interactiva de Node.js:
+
+```bash
+node
+```
+
+Una vez en la consola de Node.js:
+```javascript
+> const lib = require('intro-node-js')
+undefined
+> lib.hola()
+Hola Mundo!!!
+undefined
+> .exit
+```
+
+**Comandos útiles en REPL:**
+- `.help` - Muestra ayuda
+- `.exit` - Sale de la consola
+- `.clear` - Limpia el contexto
+- Ctrl+C (dos veces) - Forzar salida
+
+Esta forma es ideal para probar rápidamente las funciones de tu paquete sin necesidad de crear archivos de prueba.
+
 ### Desinstalación de paquetes
 Para remover un paquete de node_modules:
 ```bash

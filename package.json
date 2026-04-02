@@ -1,5 +1,5 @@
 {
-  "name": "intro-node-js",
+  "name": "proyecto-1a-matematicas",
   "version": "1.0.0",
   "description": "Proyecto de matemáticas sencillo para aprender NodeJS y subirlo a NPM",
   "main": "index.js",

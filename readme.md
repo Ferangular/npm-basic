@@ -121,6 +121,44 @@ npm test
 npm link
 ```
 
+## Versionado y Publicación en Git
+
+### Crear y subir cambios al repositorio
+```bash
+git add .
+git commit -m "feat/proyecto1_matematicas"
+git push
+```
+
+### Crear etiquetas de versión
+```bash
+# Crear tag v1.0.0
+git tag v1.0.0
+
+# Subir tags al repositorio remoto
+git push --tags
+```
+
+**Nota**: Si intentas crear un tag que ya existe, recibirás un error:
+```
+fatal: tag 'v1.0.0' already exists
+```
+
+### Verificar tags existentes
+```bash
+git tag
+```
+
+### Eliminar un tag localmente (si es necesario)
+```bash
+git tag -d v1.0.0
+```
+
+### Eliminar un tag del repositorio remoto
+```bash
+git push origin --delete v1.0.0
+```
+
 ## Estructura del Proyecto
 ```
 npm-basic/

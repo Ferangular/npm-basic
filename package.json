@@ -1,5 +1,5 @@
 {
-  "name": "api_github",
+  "name": "practica_api_github_ferangular",
   "version": "1.0.0",
   "description": "Acceso a la API de GitHub",
   "main": "index.js",

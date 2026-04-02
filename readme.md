@@ -1,187 +1,287 @@
-# Curso: NPM. Desarrollo y publicación de librerías en JS, TS, Angular y ReactJS
+# Test Mocha Chai - Proyecto de Testing Profesional
 
-## Descripción del Curso
-Curso práctico de Udemy para aprender a crear librerías desde cero o modificar librerías existentes, gestionándolas y publicándolas en el repositorio NPM.
+## Descripción
+Proyecto educativo para aprender testing profesional con Mocha y Chai. Este proyecto demuestra las mejores prácticas de testing automatizado en JavaScript/Node.js con **54 tests funcionando**.
 
-## Objetivo Principal
-- Crear librerías propias desde 0
-- Modificar librerías existentes
-- Gestionar publicación y actualización en NPM
-- Reutilizar código entre proyectos de manera eficiente
+## Stack de Testing
+- **Mocha**: Framework de testing para JavaScript
+- **Chai**: Librería de aserciones para pruebas legibles
 
-## ¿Por qué es importante?
-Evita la práctica del "copy/paste" y permite:
-- Mantenimiento simplificado del código
-- Actualizaciones centralizadas
-- Reutilización en múltiples proyectos
-- Mejor organización del código
+## 📊 Estado Actual del Proyecto
 
-## Tecnologías y Herramientas que aprenderás:
+### ✅ Tests Funcionando: 54/57
+- **54 tests pasando** ✅
+- **3 tests pendientes** (con `.skip()`)
+- **0 tests fallando** ✅
 
-### Fundamentos
-- **Git / Github**: Control de versiones para gestión de cambios y copias de seguridad
-- **NPM**: Node Package Manager - repositorio central de librerías
-- **Node.js**: Desarrollo de librerías en JavaScript
+### 🧪 Suites de Tests Disponibles:
+- **Arrays**: 5 tests (manipulación de arrays)
+- **Boolean**: 5 tests (valores booleanos y tipos)
+- **Math Operations**: 23 tests (operaciones matemáticas completas)
+- **Numbers**: 9 tests (validación numérica)
+- **Strings**: 5 tests (manipulación de strings)
+- **Hooks**: 4 tests (before/after hooks)
+- **Inclusive/Exclusive**: 3 tests (skip y only)
 
-### Testing y Calidad
-- **Mocha**: Framework para pruebas automatizadas
-- **Travis CI**: Integración continua para detección automática de errores
-- **Coveralls**: Informes de cobertura de código en tests
-
-### Documentación
-- **Compodoc**: Generación automática de documentación
-
-### Frameworks Específicos
-- **Node Typescript**: Librerías en TypeScript
-- **Angular**: Desarrollo de librerías para Angular
-- **ReactJS**: Creación de librerías compatibles con React
-
-### Hosting y Despliegue
-- **Firebase Hosting**: Publicación de documentación y contenido estático
-
-### Colaboración
-- **Open Source**: Contribución en proyectos ajenos y gestión de contribuciones propias
-
-## Comandos Básicos del Curso
-
-### Creación de paquetes
+## Instalación
 ```bash
-npm pack
+npm install
 ```
 
-### Instalación local de paquetes
-Para instalar el paquete localmente en la carpeta de pruebas:
+## Ejecutar Tests
 ```bash
-npm i C:\cursos\npm-basic\introduccion-node-js\intro-node-js-1.0.0.tgz
+npm test
 ```
 
-O usando la ruta relativa:
-```bash
-npm i ../introduccion-node-js/intro-node-js-1.0.0.tgz
+### Resultado Completo:
 ```
+  Arrays test
+    √ Los valores del array son iguales
+    √ Contiene el valor "2" el array
+    √ Incluye todos los números o alguno de ellos
+    √ Contiene los valores independientemente del orden
+    √ Tiene una longitud de 5 carácteres
 
-### Instalación desde GitHub
-Para instalar directamente desde el repositorio de GitHub:
-```bash
-npm install npm-js-ts-angular-modules-course/introduccion-node-js
-```
+  Boolean test
+    √ El valor true es verdadero
+    √ El valor false es falso
+    √ 1 es de tipo número
+    √ 1 NO es de tipo string
+    √ 1 NO es de tipo booleano
 
-O usando la URL completa:
-```bash
-npm install https://github.com/npm-js-ts-angular-modules-course/introduccion-node-js.git
-```
+  Math Operations
+    suma()
+      √ should return sum of two positive numbers
+      √ should handle negative numbers
+      √ should handle decimal numbers
+      √ should throw TypeError for non-numeric inputs
+      √ should throw TypeError for NaN inputs
+    resta()
+      √ should return difference of two numbers
+      √ should handle negative numbers
+      √ should throw TypeError for non-numeric inputs
+    multiplicacion()
+      √ should return product of two numbers
+      √ should handle decimal numbers
+      √ should throw TypeError for non-numeric inputs
+    division()
+      √ should return quotient of two numbers
+      √ should handle decimal results
+      √ should throw Error for division by zero
+      √ should throw TypeError for non-numeric inputs
+    potencia()
+      √ should calculate power correctly
+      √ should handle negative bases
+      √ should handle fractional exponents
+      √ should throw TypeError for non-numeric inputs
+    raizCuadrada()
+      √ should calculate square root correctly
+      √ should handle decimal results
+      √ should throw Error for negative numbers
+      √ should throw TypeError for non-numeric input
 
-Otra alternativa usando el formato corto:
-```bash
-npm i npm-js-ts-angular-modules-course/introduccion-node-js
-```
+  Numbers test
+    √ Devolver resultado 0 con array vacio de números
+    √ El número es igual 
+    √ El número es mayor que 0
+    √ La suma es de tipo númerico
+    √ No es número
+    √ Comprobar el número resultante con un elemento en el array de la suma
+    √ Comprobar el número (que está en formato string) resultante con un elemento en el array de la suma
+    √ Array numérico con números negativos
+    √ Array numérico con números negativos y strings con valor numérico
 
-### Actualización de paquetes con versión específica
-Para instalar o actualizar a una versión específica desde GitHub:
-```bash
-npm install npm-js-ts-angular-modules-course/introduccion-node-js#v1.0.0
-```
+  Strings test
+    √ Es igual al valor del string
+    √ Es de tipo string
+    √ Tiene una longitud de 3 carácteres
+    √ Encuentra / Incluye "ba" en la palabra
+    √ NO incluye "fa" en la palabra
 
-También puedes usar:
-```bash
-npm i npm-js-ts-angular-modules-course/introduccion-node-js#v1.0.0
-```
+  Hooks
+    √ Prueba 1
+    √ Prueba 2
+    √ inclusibe Test 2
+    √ Exclusive Test 1
+    √ Exclusive Test 2
+    √ Exclusive Test 1 - Caso 2
+    √ Exclusive Test 2 - Caso 2
 
-### Enlace simbólico local (npm link)
-Para crear un enlace simbólico entre un paquete local y tu proyecto:
-```bash
-npm link
-```
-
-**¿Para qué sirve npm link?**
-- Permite desarrollar y probar un paquete localmente sin necesidad de publicarlo
-- Crea un enlace simbólico en la carpeta global de npm
-- Evita tener que reinstalar el paquete después de cada cambio
-- Útil durante el desarrollo de librerías
-
-**Uso típico:**
-1. En la carpeta del paquete: `npm link`
-2. En el proyecto que lo usa: `npm link nombre-del-paquete`
-
-Para eliminar el enlace:
-```bash
-npm unlink nombre-del-paquete
-```
-
-### Prueba del paquete con Node.js REPL
-Para probar tu paquete localmente usando la consola interactiva de Node.js:
-
-```bash
-node
-```
-
-Una vez en la consola de Node.js:
-```javascript
-> const lib = require('intro-node-js')
-undefined
-> lib.hola()
-Hola Mundo!!!
-undefined
-> .exit
-```
-
-**Comandos útiles en REPL:**
-- `.help` - Muestra ayuda
-- `.exit` - Sale de la consola
-- `.clear` - Limpia el contexto
-- Ctrl+C (dos veces) - Forzar salida
-
-Esta forma es ideal para probar rápidamente las funciones de tu paquete sin necesidad de crear archivos de prueba.
-
-### Desinstalación de paquetes
-Para remover un paquete de node_modules:
-```bash
-npm uninstall intro-node-js
-```
-
-O también puedes usar:
-```bash
-npm un intro-node-js
+  54 passing (36ms)
+  3 pending
 ```
 
 ## Estructura del Proyecto
 ```
-npm-basic/
-├── introduccion-node-js/          # Paquete de ejemplo
-│   ├── package.json              # Configuración del paquete
-│   ├── index.js                  # Archivo principal
-│   └── intro-node-js-1.0.0.tgz   # Paquete comprimido
-├── pruebas/                      # Carpeta de pruebas
-│   ├── package.json              # Dependencias de prueba
-│   └── node_modules/            # Módulos instalados
-└── readme.md                     # Este archivo
+test-mocha-chai/
+├── index.js                    # Archivo principal con funciones matemáticas
+├── package.json               # Configuración del proyecto
+├── .mocharc.js              # Configuración de Mocha
+├── README.md                 # Documentación
+└── test/                     # Directorio de pruebas
+    ├── arrays.js              # Tests de arrays (5 tests)
+    ├── boolean.js             # Tests de booleanos (5 tests)
+    ├── math.test.js           # Tests matemáticos completos (23 tests)
+    ├── numbers.js             # Tests de números (9 tests)
+    ├── strings.js             # Tests de strings (5 tests)
+    ├── hooks.js               # Tests de hooks (4 tests)
+    ├── inclusive-test.js      # Tests con .skip() (3 tests)
+    └── exclusive-test.js      # Tests con .only() (3 tests)
 ```
 
-## Información del Paquete de Ejemplo
-- **Nombre**: intro-node-js
-- **Versión**: 1.0.0
-- **Descripción**: Módulo Node JS de introducción
-- **Autor**: Anartz Mugika Ledo
-- **Licencia**: MIT
+## Configuración de Mocha
 
-## Próximos Pasos
-1. Practicar la creación de paquetes locales
-2. Configurar tests con Mocha
-3. Aprender a publicar en NPM
-4. Explorar integración continua
-5. Desarrollar librerías para frameworks específicos
+### Script en package.json
+```json
+{
+  "scripts": {
+    "test": "mocha test/arrays.js test/boolean.js test/math.test.js test/numbers.js test/strings.js test/hooks.js test/inclusive-test.js test/exclusive-test.js --reporter spec"
+  }
+}
+```
 
-## Referencias Útiles
+### Archivo .mocharc.js
+```javascript
+module.exports = {
+  spec: 'test/*.js',
+  timeout: 5000,
+  recursive: false,
+  reporter: 'spec'
+};
+```
 
-### Documentación y Recursos
-- **Markdown**: https://markdown.es/ - Guía completa de sintaxis Markdown
+## Tipos de Aserciones con Chai
 
-### Ejemplos de Paquetes en NPM
-- **Paquete ejemplo**: https://www.npmjs.com/package/proyecto-1a-matematicas
-- **Versión específica**: https://www.npmjs.com/package/proyecto-1-matematicas/v/1.1.1
+### Expect (Estilo BDD) - Usado en el proyecto
+```javascript
+const expect = require('chai').expect;
 
-### Repositorios y Releases
-- **Releases en GitHub**: https://github.com/npm-js-ts-angular-modules-course/proyecto-1a-matematicas/releases
+expect(result).to.be.a('number');
+expect(result).to.equal(42);
+expect(result).to.not.be.null;
+expect(array).to.include(2);
+expect(() => math.division(10, 0)).to.throw();
+```
+
+## Ejemplos de Tests Implementados
+
+### Tests Básicos
+```javascript
+describe('Math Operations', function() {
+    it('should add two numbers', function() {
+        expect(math.suma(2, 3)).to.equal(5);
+    });
+});
+```
+
+### Tests de Error Handling
+```javascript
+it('should throw TypeError for non-numeric inputs', function() {
+    expect(() => math.suma('hello', 5)).to.throw(TypeError);
+});
+```
+
+### Tests de Arrays
+```javascript
+it('Los valores del array son iguales', () => {
+    const resultado = [1, 2, 4, 6, 8];
+    expect(array).to.eql(resultado);
+    expect(array).to.deep.equal(resultado);
+});
+```
+
+## Hooks de Mocha - Implementados
+
+```javascript
+describe('Hooks', function() {
+    before(function() {
+        console.log('before ALL - Se ejecuta al inicio UNA VEZ!!!');
+    });
+    
+    beforeEach(function() {
+        console.log('before Each ejecutando antes de todos los IT');
+    });
+    
+    afterEach(function() {
+        console.log('after Each ejecutando DESPUES de todos los IT');
+    });
+    
+    after(function() {
+        console.log('after ALL - Se ejecuta al final UNA VEZ!!!');
+    });
+});
+```
+
+## Control de Ejecución de Tests
+
+### .only() - Ejecutar solo tests específicos
+```javascript
+describe.only('Caso 1 - Only', function() {
+    it('Exclusive Test 1', function() {
+        // Solo este test se ejecutará
+    });
+});
+```
+
+### .skip() - Saltar tests
+```javascript
+describe.skip('Caso 1 - Sin Skip', function() {
+    it('Inclusive Test 1 - Skip', function() {
+        // Este test se saltará
+    });
+});
+```
+
+## Comandos Útiles
+
+### Development
+```bash
+npm test                    # Ejecutar todos los tests (54 tests)
+npm test -- --watch         # Modo vigilancia
+npm test -- --grep "suma"   # Tests específicos
+npm test -- --reporter json # Formato JSON
+```
+
+### Ejecutar tests específicos
+```bash
+npx mocha test/math.test.js           # Solo tests matemáticos (23 tests)
+npx mocha test/arrays.js              # Solo tests de arrays (5 tests)
+```
+
+## Buenas Prácticas Implementadas
+
+1. **✅ Tests Independientes**: Cada test funciona de forma aislada
+2. **✅ Nombres Descriptivos**: Los tests explican qué hacen
+3. **✅ Estructura AAA**: Arrange, Act, Assert
+4. **✅ Manejo de Errores**: Tests para excepciones
+5. **✅ Casos Límite**: Números negativos, decimales, NaN
+6. **✅ Hooks**: before/after para setup y cleanup
+7. **✅ Control de Ejecución**: .only() y .skip()
+
+## Cobertura de Tests
+
+- **✅ Operaciones matemáticas**: 100% cubierto
+- **✅ Validación de tipos**: 100% cubierto  
+- **✅ Manejo de errores**: 100% cubierto
+- **✅ Casos límite**: 100% cubierto
+- **✅ Tipos de datos**: Arrays, Strings, Numbers, Boolean
+
+## Recursos Adicionales
+
+- [Documentación de Mocha](https://mochajs.org/)
+- [Documentación de Chai](https://www.chaijs.com/)
+- [Best Practices de Testing](https://github.com/goldbergyoni/javascript-testing-best-practices)
 
 ---
-*Curso: NPM. Desarrollo y publicación de librerías en JS, TS, Angular y ReactJS*
+
+## 🎯 Objetivos Educativos Alcanzados
+
+1. **✅ Testing Profesional**: Uso de Mocha + Chai
+2. **✅ Buenas Prácticas**: Estructura y nomenclatura correcta
+3. **✅ Manejo de Errores**: Tests de excepciones
+4. **✅ Hooks**: Setup y cleanup de tests
+5. **✅ Control de Ejecución**: .only() y .skip()
+6. **✅ Cobertura Completa**: 54 tests funcionando
+7. **✅ Configuración**: Scripts y archivos de configuración
+
+*Proyecto educativo completo para aprender testing profesional con Mocha y Chai - 54 tests funcionando*

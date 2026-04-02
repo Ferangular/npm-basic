@@ -1,10 +1,25 @@
 {
-  "name": "intro-node-js",
+  "name": "test-mocha-chai",
   "version": "1.0.0",
-  "description": "Curso JS introducción",
+  "description": "test mocha chai",
   "main": "index.js",
   "scripts": {
-    "test": "node pruebas/index.js"
+    "test": "mocha test/arrays.js test/boolean.js test/math.test.js test/numbers.js test/strings.js test/hooks.js test/inclusive-test.js test/exclusive-test.js --reporter spec",
+    "test:math": "mocha test/math.test.js --reporter spec",
+    "test:arrays": "mocha test/arrays.js --reporter spec",
+    "test:boolean": "mocha test/boolean.js --reporter spec",
+    "test:numbers": "mocha test/numbers.js --reporter spec",
+    "test:strings": "mocha test/strings.js --reporter spec",
+    "test:hooks": "mocha test/hooks.js --reporter spec",
+    "test:suma": "mocha test/math.test.js --grep \"suma\" --reporter spec",
+    "test:resta": "mocha test/math.test.js --grep \"resta\" --reporter spec",
+    "test:multiplicacion": "mocha test/math.test.js --grep \"multiplicacion\" --reporter spec",
+    "test:division": "mocha test/math.test.js --grep \"division\" --reporter spec",
+    "test:potencia": "mocha test/math.test.js --grep \"potencia\" --reporter spec",
+    "test:raiz": "mocha test/math.test.js --grep \"raiz\" --reporter spec",
+    "test:errors": "mocha test/math.test.js --grep \"throw\" --reporter spec",
+    "test:watch": "mocha test/arrays.js test/boolean.js test/math.test.js test/numbers.js test/strings.js --watch --reporter spec",
+    "test:specific": "mocha --grep"
   },
   "repository": {
     "type": "git",
@@ -19,5 +34,9 @@
   "bugs": {
     "url": "https://github.com/Ferangular/npm-basic/issues"
   },
-  "homepage": "https://github.com/Ferangular/npm-basic#readme"
+  "homepage": "https://github.com/Ferangular/npm-basic#readme",
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5"
+  }
 }

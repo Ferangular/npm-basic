@@ -104,22 +104,22 @@ const api = require('./index.js');
 
 // Obtener información de cualquier usuario de GitHub
 api.obtenerDatosDeUsuario('Ferangular')
-        .then(data => {
-          if (data.message) {
-            console.log('❌ Usuario no encontrado');
-            return;
-          }
-
-          console.log('👤 Perfil de GitHub:');
-          console.log(`• Nombre: ${data.name || 'No especificado'}`);
-          console.log(`• Usuario: @${data.login}`);
-          console.log(`• Repositorios: ${data.public_repos}`);
-          console.log(`• Seguidores: ${data.followers}`);
-          console.log(`• Perfil: ${data.html_url}`);
-        })
-        .catch(error => {
-          console.error('❌ Error de conexión:', error.message);
-        });
+  .then(data => {
+    if (data.message) {
+      console.log('❌ Usuario no encontrado');
+      return;
+    }
+    
+    console.log('👤 Perfil de GitHub:');
+    console.log(`• Nombre: ${data.name || 'No especificado'}`);
+    console.log(`• Usuario: @${data.login}`);
+    console.log(`• Repositorios: ${data.public_repos}`);
+    console.log(`• Seguidores: ${data.followers}`);
+    console.log(`• Perfil: ${data.html_url}`);
+  })
+  .catch(error => {
+    console.error('❌ Error de conexión:', error.message);
+  });
 ```
 
 ### Ejemplo Avanzado - Análisis de Perfil
@@ -129,23 +129,23 @@ const api = require('./index.js');
 async function analizarPerfilGitHub(username) {
   try {
     console.log(`🔍 Analizando perfil de @${username}...`);
-
+    
     const perfil = await api.obtenerDatosDeUsuario(username);
-
+    
     if (perfil.message) {
       console.log(`❌ Error: ${perfil.message}`);
       return;
     }
-
+    
     // Análisis detallado del perfil
     const analisis = {
-      actividad: perfil.public_repos > 20 ? '🔥 Muy activo' :
-              perfil.public_repos > 5 ? '📊 Activo' : '🌱 Principiante',
+      actividad: perfil.public_repos > 20 ? '🔥 Muy activo' : 
+                 perfil.public_repos > 5 ? '📊 Activo' : '🌱 Principiante',
       popularidad: perfil.followers > 1000 ? '⭐ Popular' :
-              perfil.followers > 100 ? '👥 Reconocido' : '👤 En desarrollo',
+                   perfil.followers > 100 ? '👥 Reconocido' : '👤 En desarrollo',
       antiguedad: Math.floor((Date.now() - new Date(perfil.created_at)) / (1000 * 60 * 60 * 24 * 365))
     };
-
+    
     console.log('\n📊 Análisis del Perfil:');
     console.log('─'.repeat(30));
     console.log(`👤 ${perfil.name || perfil.login}`);
@@ -156,11 +156,11 @@ async function analizarPerfilGitHub(username) {
     console.log(`📊 Actividad: ${analisis.actividad} (${perfil.public_repos} repos)`);
     console.log(`👥 Popularidad: ${analisis.popularidad} (${perfil.followers} seguidores)`);
     console.log(`📅 Antigüedad: ${analisis.antiguedad} años en GitHub`);
-
+    
     if (perfil.blog) {
       console.log(`🌐 Blog/Sitio web: ${perfil.blog}`);
     }
-
+    
   } catch (error) {
     console.error('❌ Error al analizar perfil:', error.message);
   }
@@ -176,18 +176,18 @@ const api = require('./index.js');
 
 async function buscarUsuarios(usernames) {
   console.log('🔍 Buscando múltiples usuarios...\n');
-
+  
   for (const username of usernames) {
     try {
       const data = await api.obtenerDatosDeUsuario(username);
-
+      
       if (data.message) {
         console.log(`❌ @${username}: ${data.message}`);
         continue;
       }
-
+      
       console.log(`✅ @${data.login}: ${data.name || 'Sin nombre'} - ${data.public_repos} repos`);
-
+      
     } catch (error) {
       console.log(`🔴 @${username}: Error de conexión - ${error.message}`);
     }
@@ -334,7 +334,7 @@ git push origin main
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la **MIT License**.
+Este proyecto está licenciado bajo la **MIT License**. 
 
 ### Resumen de la licencia
 - ✅ Uso comercial permitido

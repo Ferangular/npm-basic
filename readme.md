@@ -89,7 +89,7 @@ undefined
 
 ## Información del Paquete
 - **Nombre**: proyecto-mate-1
-- **Versión**: 1.0.0
+- **Versión**: 1.0.2
 - **Descripción**: Proyecto de matemáticas sencillo para aprender NodeJS y subirlo a NPM
 - **Autor**: Fer
 - **Licencia**: ISC
@@ -234,6 +234,75 @@ Press ENTER to open in the browser...
 ```
 
 **Resultado**: `+ proyecto-mate-1@1.0.0` indica que la publicación fue exitosa.
+
+## Versionado Semántico y Actualización de Paquetes
+
+### Tipos de versionado con npm version
+```bash
+# Incrementar versión patch (1.0.0 → 1.0.1) - Correcciones de bugs
+npm version patch
+
+# Incrementar versión minor (1.0.0 → 1.1.0) - Nuevas funcionalidades
+npm version minor
+
+# Incrementar versión major (1.0.0 → 2.0.0) - Cambios que rompen compatibilidad
+npm version major
+```
+
+### Proceso completo de actualización y publicación
+1. **Actualizar versión**:
+   ```bash
+   npm version patch
+   ```
+   Salida: `v1.0.2`
+
+2. **Subir cambios a Git**:
+   ```bash
+   git push
+   ```
+
+3. **Publicar nueva versión en NPM**:
+   ```bash
+   npm publish
+   ```
+
+4. **Subir tags al repositorio**:
+   ```bash
+   git push --tags
+   ```
+
+### Ejemplo de publicación de versión 1.0.2
+```bash
+npm notice
+npm notice package: proyecto-mate-1@1.0.2
+npm notice Tarball Contents
+npm notice 169B .idea/encodings.xml
+npm notice 277B .idea/modules.xml
+npm notice 469B .idea/npm-basic.iml
+npm notice 172B .idea/vcs.xml
+npm notice 164.8kB assets/docs/NPM+-+Versionado+Semántico.pdf
+npm notice 1.8kB index.js
+npm notice 649B package.json
+npm notice 264B prueba.js
+npm notice 7.3kB readme.md
+npm notice name: proyecto-mate-1
+npm notice version: 1.0.2
+npm notice filename: proyecto-mate-1-1.0.2.tgz
+npm notice package size: 153.2 kB
+npm notice unpacked size: 175.8 kB
+npm notice shasum: f5bc41583bc44435e64d6879a9d97e5b3a8144a1
+npm notice integrity: sha512-0zpIxbqXJJDB3[...]yo6b/sJpioz4w==
+npm notice total files: 9
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and default access
+Authenticate your account at:
+https://www.npmjs.com/auth/cli/46a0bdb0-86b3-4268-bac6-87d9e2887391
+Press ENTER to open in the browser...
+
++ proyecto-mate-1@1.0.2
+```
+
+**Resultado**: `+ proyecto-mate-1@1.0.2` indica que la nueva versión fue publicada exitosamente.
 
 ### Verificar publicación
 Verifica que tu paquete esté disponible en:

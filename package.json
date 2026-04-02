@@ -1,6 +1,6 @@
 {
   "name": "proyecto-mate-1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Proyecto de matemáticas sencillo para aprender NodeJS y subirlo a NPM",
   "main": "index.js",
   "scripts": {

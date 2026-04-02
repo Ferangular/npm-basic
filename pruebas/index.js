@@ -1,4 +1,4 @@
-const lib = require('./../introduccion-node-js/');
+const lib = require('intro-node-js');
 
 
 lib.hola();

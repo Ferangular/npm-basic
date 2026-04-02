@@ -1,7 +1,7 @@
 {
   "name": "intro-node-js",
   "version": "1.0.0",
-  "description": "Curso JS introducción",
+  "description": "Proyecto de matemáticas sencillo para aprender NodeJS y subirlo a NPM",
   "main": "index.js",
   "scripts": {
     "test": "node pruebas/index.js"
@@ -12,7 +12,14 @@
   },
   "keywords": [
     "npm",
-    "nodejs"
+    "nodejs",
+    "math",
+    "matematica",
+    "suma",
+    "resta",
+    "division",
+    "multi",
+    "basico"
   ],
   "author": "Fer",
   "license": "ISC",

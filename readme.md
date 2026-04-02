@@ -1,187 +1,134 @@
-# Curso: NPM. Desarrollo y publicación de librerías en JS, TS, Angular y ReactJS
+# Proyecto 1 Matemáticas - Librería Básica de Matemáticas
 
-## Descripción del Curso
-Curso práctico de Udemy para aprender a crear librerías desde cero o modificar librerías existentes, gestionándolas y publicándolas en el repositorio NPM.
+## Descripción
+Librería de matemáticas sencilla para aprender NodeJS y publicar paquetes en NPM. Este proyecto contiene operaciones matemáticas básicas con validación de tipos de datos.
 
-## Objetivo Principal
-- Crear librerías propias desde 0
-- Modificar librerías existentes
-- Gestionar publicación y actualización en NPM
-- Reutilizar código entre proyectos de manera eficiente
+## Funciones Disponibles
 
-## ¿Por qué es importante?
-Evita la práctica del "copy/paste" y permite:
-- Mantenimiento simplificado del código
-- Actualizaciones centralizadas
-- Reutilización en múltiples proyectos
-- Mejor organización del código
-
-## Tecnologías y Herramientas que aprenderás:
-
-### Fundamentos
-- **Git / Github**: Control de versiones para gestión de cambios y copias de seguridad
-- **NPM**: Node Package Manager - repositorio central de librerías
-- **Node.js**: Desarrollo de librerías en JavaScript
-
-### Testing y Calidad
-- **Mocha**: Framework para pruebas automatizadas
-- **Travis CI**: Integración continua para detección automática de errores
-- **Coveralls**: Informes de cobertura de código en tests
-
-### Documentación
-- **Compodoc**: Generación automática de documentación
-
-### Frameworks Específicos
-- **Node Typescript**: Librerías en TypeScript
-- **Angular**: Desarrollo de librerías para Angular
-- **ReactJS**: Creación de librerías compatibles con React
-
-### Hosting y Despliegue
-- **Firebase Hosting**: Publicación de documentación y contenido estático
-
-### Colaboración
-- **Open Source**: Contribución en proyectos ajenos y gestión de contribuciones propias
-
-## Comandos Básicos del Curso
-
-### Creación de paquetes
-```bash
-npm pack
+### suma(n1, n2)
+Realiza la suma de dos números.
+```javascript
+const m = require('.');
+console.log(m.suma(1, 1));  // 2
+console.log(m.suma(1, 12)); // 13
 ```
 
-### Instalación local de paquetes
-Para instalar el paquete localmente en la carpeta de pruebas:
-```bash
-npm i C:\cursos\npm-basic\introduccion-node-js\intro-node-js-1.0.0.tgz
+### resta(n1, n2)
+Realiza la resta de dos números.
+```javascript
+console.log(m.resta(1, 12)); // -11
 ```
 
-O usando la ruta relativa:
-```bash
-npm i ../introduccion-node-js/intro-node-js-1.0.0.tgz
+### multiplicacion(n1, n2)
+Realiza la multiplicación de dos números.
+```javascript
+console.log(m.multiplicacion(1, 12)); // 12
+console.log(m.multiplicacion(2, 12)); // 24
 ```
 
-### Instalación desde GitHub
-Para instalar directamente desde el repositorio de GitHub:
-```bash
-npm install npm-js-ts-angular-modules-course/introduccion-node-js
+### division(n1, n2)
+Realiza la división de dos números.
+```javascript
+console.log(m.division(12, 2)); // 6
 ```
 
-O usando la URL completa:
+## Instalación
 ```bash
-npm install https://github.com/npm-js-ts-angular-modules-course/introduccion-node-js.git
+npm install intro-node-js
 ```
 
-Otra alternativa usando el formato corto:
-```bash
-npm i npm-js-ts-angular-modules-course/introduccion-node-js
+## Uso
+```javascript
+const math = require('intro-node-js');
+
+// Realizar operaciones
+const resultadoSuma = math.suma(5, 3);
+const resultadoResta = math.resta(10, 4);
+const resultadoMultiplicacion = math.multiplicacion(6, 7);
+const resultadoDivision = math.division(20, 5);
+
+console.log('Suma:', resultadoSuma);
+console.log('Resta:', resultadoResta);
+console.log('Multiplicación:', resultadoMultiplicacion);
+console.log('División:', resultadoDivision);
 ```
 
-### Actualización de paquetes con versión específica
-Para instalar o actualizar a una versión específica desde GitHub:
-```bash
-npm install npm-js-ts-angular-modules-course/introduccion-node-js#v1.0.0
-```
+## Validación de Datos
+La librería incluye validación automática para asegurar que ambos parámetros sean numéricos. Si alguno de los valores no es un número, se mostrará un mensaje de error en la consola.
 
-También puedes usar:
-```bash
-npm i npm-js-ts-angular-modules-course/introduccion-node-js#v1.0.0
-```
-
-### Enlace simbólico local (npm link)
-Para crear un enlace simbólico entre un paquete local y tu proyecto:
-```bash
-npm link
-```
-
-**¿Para qué sirve npm link?**
-- Permite desarrollar y probar un paquete localmente sin necesidad de publicarlo
-- Crea un enlace simbólico en la carpeta global de npm
-- Evita tener que reinstalar el paquete después de cada cambio
-- Útil durante el desarrollo de librerías
-
-**Uso típico:**
-1. En la carpeta del paquete: `npm link`
-2. En el proyecto que lo usa: `npm link nombre-del-paquete`
-
-Para eliminar el enlace:
-```bash
-npm unlink nombre-del-paquete
-```
-
-### Prueba del paquete con Node.js REPL
-Para probar tu paquete localmente usando la consola interactiva de Node.js:
+## Pruebas con Node.js REPL
+Puedes probar la librería directamente usando la consola interactiva de Node.js:
 
 ```bash
 node
 ```
 
-Una vez en la consola de Node.js:
+Una vez en la consola:
 ```javascript
-> const lib = require('intro-node-js')
+> const m = require('.')
 undefined
-> lib.hola()
-Hola Mundo!!!
+> console.log(m.suma(1,1))
+2
 undefined
-> .exit
+> console.log(m.suma(1,12))
+13
+undefined
+> console.log(m.resta(1,12))
+-11
+undefined
+> console.log(m.multiplicacion(1,12))
+12
+undefined
+> console.log(m.multiplicacion(2,12))
+24
+undefined
+> console.log(m.division(12,2))
+6
+undefined
 ```
 
-**Comandos útiles en REPL:**
-- `.help` - Muestra ayuda
-- `.exit` - Sale de la consola
-- `.clear` - Limpia el contexto
-- Ctrl+C (dos veces) - Forzar salida
+## Información del Paquete
+- **Nombre**: intro-node-js
+- **Versión**: 1.0.0
+- **Descripción**: Proyecto de matemáticas sencillo para aprender NodeJS y subirlo a NPM
+- **Autor**: Fer
+- **Licencia**: ISC
+- **Palabras clave**: npm, nodejs, math, matematica, suma, resta, division, multi, basico
 
-Esta forma es ideal para probar rápidamente las funciones de tu paquete sin necesidad de crear archivos de prueba.
+## Repositorio
+- **GitHub**: https://github.com/Ferangular/npm-basic
+- **Issues**: https://github.com/Ferangular/npm-basic/issues
 
-### Desinstalación de paquetes
-Para remover un paquete de node_modules:
+## Comandos Útiles para Desarrollo
+
+### Crear paquete
 ```bash
-npm uninstall intro-node-js
+npm pack
 ```
 
-O también puedes usar:
+### Instalación local
 ```bash
-npm un intro-node-js
+npm install .
+```
+
+### Ejecutar pruebas
+```bash
+npm test
+```
+
+### Usar npm link para desarrollo local
+```bash
+npm link
 ```
 
 ## Estructura del Proyecto
 ```
 npm-basic/
-├── introduccion-node-js/          # Paquete de ejemplo
-│   ├── package.json              # Configuración del paquete
-│   ├── index.js                  # Archivo principal
-│   └── intro-node-js-1.0.0.tgz   # Paquete comprimido
-├── pruebas/                      # Carpeta de pruebas
-│   ├── package.json              # Dependencias de prueba
-│   └── node_modules/            # Módulos instalados
-└── readme.md                     # Este archivo
+├── index.js              # Archivo principal con funciones matemáticas
+├── package.json          # Configuración del paquete
+├── README.md             # Documentación
+└── prueba.js             # Archivo de pruebas
 ```
 
-## Información del Paquete de Ejemplo
-- **Nombre**: intro-node-js
-- **Versión**: 1.0.0
-- **Descripción**: Módulo Node JS de introducción
-- **Autor**: Anartz Mugika Ledo
-- **Licencia**: MIT
-
-## Próximos Pasos
-1. Practicar la creación de paquetes locales
-2. Configurar tests con Mocha
-3. Aprender a publicar en NPM
-4. Explorar integración continua
-5. Desarrollar librerías para frameworks específicos
-
-## Referencias Útiles
-
-### Documentación y Recursos
-- **Markdown**: https://markdown.es/ - Guía completa de sintaxis Markdown
-
-### Ejemplos de Paquetes en NPM
-- **Paquete ejemplo**: https://www.npmjs.com/package/proyecto-1a-matematicas
-- **Versión específica**: https://www.npmjs.com/package/proyecto-1-matematicas/v/1.1.1
-
-### Repositorios y Releases
-- **Releases en GitHub**: https://github.com/npm-js-ts-angular-modules-course/proyecto-1a-matematicas/releases
-
 ---
-*Curso: NPM. Desarrollo y publicación de librerías en JS, TS, Angular y ReactJS*
+*Proyecto 1 Matemáticas - Librería básica para aprender NodeJS y NPM*

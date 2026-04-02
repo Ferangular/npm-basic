@@ -1,23 +1,18 @@
 {
-  "name": "string-utilities-plus",
+  "name": "intro-node-js",
   "version": "1.0.0",
-  "description": "Una librería educativa de utilidades de strings para aprender a crear paquetes npm",
+  "description": "Curso JS introducción",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node pruebas/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ferangular/npm-basic.git"
   },
   "keywords": [
-    "string",
-    "utilities",
-    "educational",
     "npm",
-    "nodejs",
-    "javascript",
-    "learning"
+    "nodejs"
   ],
   "author": "Fer",
   "license": "ISC",

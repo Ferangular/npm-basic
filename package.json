@@ -1,10 +1,13 @@
 {
-  "name": "intro-node-js",
+  "name": "api_github",
   "version": "1.0.0",
-  "description": "Curso JS introducción",
+  "description": "Acceso a la API de GitHub",
   "main": "index.js",
   "scripts": {
-    "test": "node pruebas/index.js"
+    "test": "node pruebas/index.js",
+    "test:unit": "mocha test/index_mocha.js",
+    "test:simple": "node test/index.js",
+    "test:watch": "node --watch test/index.js"
   },
   "repository": {
     "type": "git",
@@ -12,12 +15,22 @@
   },
   "keywords": [
     "npm",
-    "nodejs"
+    "nodejs",
+    "api",
+    "github"
   ],
   "author": "Fer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ferangular/npm-basic/issues"
   },
-  "homepage": "https://github.com/Ferangular/npm-basic#readme"
+  "homepage": "https://github.com/Ferangular/npm-basic#readme",
+  "dependencies": {
+    "axios": "^1.13.5"
+  },
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "nock": "^14.0.11"
+  }
 }

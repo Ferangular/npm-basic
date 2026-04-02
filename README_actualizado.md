@@ -299,6 +299,11 @@ api_github/
   },
   "dependencies": {
     "axios": "^1.13.5"
+  },
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "nock": "^14.0.11"
   }
 }
 ```
@@ -308,6 +313,10 @@ api_github/
   - ✅ **Seguro**: Sin vulnerabilidades conocidas
   - ✅ **Actualizado**: Última versión estable
   - ✅ **Compatible**: Soporte para Promise y async/await
+
+- **chai@^6.2.2**: Librería de aserciones para testing
+- **mocha@^11.7.5**: Framework de testing
+- **nock@^14.0.11**: Mocking de HTTP requests
 
 ### Auditoría de Seguridad
 ```bash
@@ -335,22 +344,120 @@ npm install axios@latest
 
 ## 🧪 Pruebas
 
-### Ejecutar pruebas
+### Dependencias de Desarrollo
+El proyecto incluye las siguientes dependencias para testing:
+
+```json
+{
+  "devDependencies": {
+    "chai": "^6.2.2",      // Librería de aserciones
+    "mocha": "^11.7.5",     // Framework de testing
+    "nock": "^14.0.11"     // Mocking de HTTP requests
+  }
+}
+```
+
+### Instalación de Dependencias de Testing
+```bash
+# Instalar dependencias de desarrollo
+npm install --save-dev chai mocha nock
+
+# Verificar instalación
+npm list --depth=0
+
+# Salida esperada:
+# api_github@1.0.0
+# ├── axios@1.13.5
+# └─┬ chai@6.2.2
+#   └── assertion-error@2.0.1
+```
+
+### ✅ Prueba Funcional Realizada
+
+#### Comando de Verificación de Seguridad
+```bash
+npm audit fix --force
+```
+
+#### Prueba en Node.js REPL
+```javascript
+// Iniciar Node.js
+node
+
+// Cargar el módulo
+var api = require('./')
+
+// Probar con el usuario del proyecto
+api.obtenerDatosDeUsuario('Ferangular').then(data=> console.log(data))
+```
+
+#### 📊 Resultado Obtenido
+```json
+{
+  "login": "Ferangular",
+  "id": 154634336,
+  "node_id": "U_kgDOCTeIYA",
+  "avatar_url": "https://avatars.githubusercontent.com/u/154634336?v=4",
+  "url": "https://api.github.com/users/Ferangular",
+  "html_url": "https://github.com/Ferangular",
+  "type": "User",
+  "name": "Fer",
+  "company": null,
+  "blog": "",
+  "location": null,
+  "email": null,
+  "hireable": null,
+  "bio": null,
+  "twitter_username": null,
+  "public_repos": 33,
+  "public_gists": 0,
+  "followers": 0,
+  "following": 0,
+  "created_at": "2023-12-22T20:30:50Z",
+  "updated_at": "2024-05-21T21:19:42Z"
+}
+```
+
+### ✅ Verificación Exitosa
+
+- **🔒 Seguridad**: `npm audit fix --force` ejecutado sin errores
+- **📡 API**: Conexión exitosa a GitHub API
+- **👤 Usuario**: Datos de 'Ferangular' obtenidos correctamente
+- **📊 Datos**: 33 repositorios públicos, 0 seguidores
+- **🔗 Enlaces**: URLs de perfil y API funcionando
+- **📅 Fechas**: Creación y actualización correctas
+
+### 🧪 Ejecutar Pruebas
 ```bash
 npm test
 ```
 
-### Prueba manual
+### Prueba Manual (Recomendado)
 ```javascript
-const api = require('./index');
+const api = require('./index.js');
 
-// Test con usuario existente
-api.obtenerDatosDeUsuario('octocat')
-  .then(data => console.log('✅ Test 1 passed:', data.login));
+// Test 1: Usuario existente
+api.obtenerDatosDeUsuario('Ferangular')
+  .then(data => {
+    console.log('✅ Test 1 - Usuario encontrado:');
+    console.log(`👤 ${data.name} (@${data.login})`);
+    console.log(`📊 ${data.public_repos} repositorios`);
+    console.log(`🔗 ${data.html_url}`);
+  })
+  .catch(error => {
+    console.error('❌ Error:', error.message);
+  });
 
-// Test con usuario inexistente
+// Test 2: Usuario no existente
 api.obtenerDatosDeUsuario('usuarioquenexiste12345')
-  .then(data => console.log('✅ Test 2 passed:', data.message));
+  .then(data => {
+    if (data.message) {
+      console.log('✅ Test 2 - Error controlado:', data.message);
+    }
+  })
+  .catch(error => {
+    console.error('❌ Error inesperado:', error.message);
+  });
 ```
 
 ## 📚 Documentación de GitHub API

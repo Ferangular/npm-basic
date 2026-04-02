@@ -34,12 +34,12 @@ console.log(m.division(12, 2)); // 6
 
 ## Instalación
 ```bash
-npm install intro-node-js
+npm install proyecto-mate-1
 ```
 
 ## Uso
 ```javascript
-const math = require('intro-node-js');
+const math = require('proyecto-mate-1');
 
 // Realizar operaciones
 const resultadoSuma = math.suma(5, 3);
@@ -65,7 +65,7 @@ node
 
 Una vez en la consola:
 ```javascript
-> const m = require('.')
+> const m = require('proyecto-mate-1')
 undefined
 > console.log(m.suma(1,1))
 2
@@ -88,7 +88,7 @@ undefined
 ```
 
 ## Información del Paquete
-- **Nombre**: intro-node-js
+- **Nombre**: proyecto-mate-1
 - **Versión**: 1.0.0
 - **Descripción**: Proyecto de matemáticas sencillo para aprender NodeJS y subirlo a NPM
 - **Autor**: Fer
@@ -120,6 +120,125 @@ npm test
 ```bash
 npm link
 ```
+
+## Publicación en NPM
+
+### Verificar disponibilidad del nombre del paquete
+Antes de publicar, verifica que el nombre del paquete no esté tomado en NPM:
+
+```bash
+npm view proyecto-mate-1
+```
+
+Si el paquete no existe, recibirás un error como:
+```
+npm ERR! code E404
+npm ERR! 404 Not Found - GET https://registry.npmjs.org/proyecto-mate-1 - Not found
+```
+
+### Iniciar sesión en NPM
+Para publicar paquetes, primero debes iniciar sesión en tu cuenta de NPM:
+
+```bash
+npm adduser
+```
+
+Este comando te redigirá a crear una cuenta o iniciar sesión:
+```
+npm notice Log in on https://registry.npmjs.org/
+Create your account at:
+https://www.npmjs.com/login?next=/login/cli/[unique-id]
+Press ENTER to open in the browser...
+
+Logged in on https://registry.npmjs.org/.
+```
+
+**Nota**: El nombre del paquete en `package.json` debe ser único en todo NPM. Cambiamos de `intro-node-js` a `proyecto-mate-1` para evitar conflictos.
+
+### Publicar el paquete
+Una vez logueado y con un nombre único, publica tu paquete:
+
+```bash
+npm publish
+```
+
+**Error común de 2FA**: Si recibes este error:
+```
+npm error code E403
+npm error 403 403 Forbidden - PUT https://registry.npmjs.org/proyecto-mate-1
+npm error 403 Two-factor authentication or granular access token with bypass 2fa enabled is required to publish packages.
+```
+
+**Soluciones**:
+
+1. **Habilitar 2FA en tu cuenta NPM** (Opción recomendada):
+   - Ve a https://www.npmjs.com
+   - Entra en tu cuenta
+   - Ve a Account
+   - Busca Two-Factor Authentication
+   - Activa 2FA
+
+2. **Crear token de acceso**:
+   ```bash
+   npm token create
+   ```
+   Luego publica con el token:
+   ```bash
+   npm publish --token <tu-token-aqui>
+   ```
+
+3. **Configurar token en .npmrc**:
+   Crea un archivo `.npmrc` con:
+   ```
+   //registry.npmjs.org/:_authToken=<tu-token-aqui>
+   ```
+
+### Proceso de publicación exitoso con 2FA
+Una vez activado 2FA, el proceso de publicación es:
+
+```bash
+npm publish
+```
+
+NPM mostrará el resumen del paquete y te pedirá autenticación:
+
+```
+npm notice
+npm notice package: proyecto-mate-1@1.0.0
+npm notice Tarball Contents
+npm notice 169B .idea/encodings.xml
+npm notice 277B .idea/modules.xml
+npm notice 469B .idea/npm-basic.iml
+npm notice 172B .idea/vcs.xml
+npm notice 164.8kB assets/docs/NPM+-+Versionado+Semántico.pdf
+npm notice 1.8kB index.js
+npm notice 649B package.json
+npm notice 264B prueba.js
+npm notice 5.9kB readme.md
+npm notice Tarball Details
+npm notice name: proyecto-mate-1
+npm notice version: 1.0.0
+npm notice filename: proyecto-mate-1-1.0.0.tgz
+npm notice package size: 152.8 kB
+npm notice unpacked size: 174.5 kB
+npm notice shasum: 8c59d16d8a06f3c8171dddfd13bd7d88bbc1f26e
+npm notice integrity: sha512-ySL4RcCuM3Eet[...]o/j5R2Lkt2V5Q==
+npm notice total files: 9
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and default access
+Authenticate your account at:
+https://www.npmjs.com/auth/cli/c5d583db-3d8e-42e0-82ce-2ccc5bfdeeb9
+Press ENTER to open in the browser...
+
++ proyecto-mate-1@1.0.0
+```
+
+**Resultado**: `+ proyecto-mate-1@1.0.0` indica que la publicación fue exitosa.
+
+### Verificar publicación
+Verifica que tu paquete esté disponible en:
+- **NPM**: https://www.npmjs.com/package/proyecto-mate-1
+- **Terminal**: `npm view proyecto-mate-1`
 
 ## Versionado y Publicación en Git
 

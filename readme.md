@@ -171,5 +171,17 @@ npm-basic/
 4. Explorar integración continua
 5. Desarrollar librerías para frameworks específicos
 
+## Referencias Útiles
+
+### Documentación y Recursos
+- **Markdown**: https://markdown.es/ - Guía completa de sintaxis Markdown
+
+### Ejemplos de Paquetes en NPM
+- **Paquete ejemplo**: https://www.npmjs.com/package/proyecto-1a-matematicas
+- **Versión específica**: https://www.npmjs.com/package/proyecto-1-matematicas/v/1.1.1
+
+### Repositorios y Releases
+- **Releases en GitHub**: https://github.com/npm-js-ts-angular-modules-course/proyecto-1a-matematicas/releases
+
 ---
 *Curso: NPM. Desarrollo y publicación de librerías en JS, TS, Angular y ReactJS*

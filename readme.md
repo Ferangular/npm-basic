@@ -1,187 +1,320 @@
-# Curso: NPM. Desarrollo y publicación de librerías en JS, TS, Angular y ReactJS
+# CLI Generator de Proyectos - Tutorial Completo NPM
 
-## Descripción del Curso
-Curso práctico de Udemy para aprender a crear librerías desde cero o modificar librerías existentes, gestionándolas y publicándolas en el repositorio NPM.
+CLI educativo para aprender a crear, publicar y gestionar paquetes en NPM. Genera proyectos completos con templates personalizables.
 
-## Objetivo Principal
-- Crear librerías propias desde 0
-- Modificar librerías existentes
-- Gestionar publicación y actualización en NPM
-- Reutilizar código entre proyectos de manera eficiente
+## 📚 Objetivo Educativo
 
-## ¿Por qué es importante?
-Evita la práctica del "copy/paste" y permite:
-- Mantenimiento simplificado del código
-- Actualizaciones centralizadas
-- Reutilización en múltiples proyectos
-- Mejor organización del código
+Este proyecto es un tutorial práctico que cubre:
+- ✅ Creación de CLI con Node.js
+- ✅ Sistema de templates dinámicos
+- ✅ Generación de proyectos (Node.js, TypeScript)
+- ✅ Testing con Mocha y Chai
+- ✅ Configuración de package.json
+- ✅ Publicación en NPM
+- ✅ Gestión de versiones y templates
 
-## Tecnologías y Herramientas que aprenderás:
-
-### Fundamentos
-- **Git / Github**: Control de versiones para gestión de cambios y copias de seguridad
-- **NPM**: Node Package Manager - repositorio central de librerías
-- **Node.js**: Desarrollo de librerías en JavaScript
-
-### Testing y Calidad
-- **Mocha**: Framework para pruebas automatizadas
-- **Travis CI**: Integración continua para detección automática de errores
-- **Coveralls**: Informes de cobertura de código en tests
-
-### Documentación
-- **Compodoc**: Generación automática de documentación
-
-### Frameworks Específicos
-- **Node Typescript**: Librerías en TypeScript
-- **Angular**: Desarrollo de librerías para Angular
-- **ReactJS**: Creación de librerías compatibles con React
-
-### Hosting y Despliegue
-- **Firebase Hosting**: Publicación de documentación y contenido estático
-
-### Colaboración
-- **Open Source**: Contribución en proyectos ajenos y gestión de contribuciones propias
-
-## Comandos Básicos del Curso
-
-### Creación de paquetes
-```bash
-npm pack
-```
-
-### Instalación local de paquetes
-Para instalar el paquete localmente en la carpeta de pruebas:
-```bash
-npm i C:\cursos\npm-basic\introduccion-node-js\intro-node-js-1.0.0.tgz
-```
-
-O usando la ruta relativa:
-```bash
-npm i ../introduccion-node-js/intro-node-js-1.0.0.tgz
-```
-
-### Instalación desde GitHub
-Para instalar directamente desde el repositorio de GitHub:
-```bash
-npm install npm-js-ts-angular-modules-course/introduccion-node-js
-```
-
-O usando la URL completa:
-```bash
-npm install https://github.com/npm-js-ts-angular-modules-course/introduccion-node-js.git
-```
-
-Otra alternativa usando el formato corto:
-```bash
-npm i npm-js-ts-angular-modules-course/introduccion-node-js
-```
-
-### Actualización de paquetes con versión específica
-Para instalar o actualizar a una versión específica desde GitHub:
-```bash
-npm install npm-js-ts-angular-modules-course/introduccion-node-js#v1.0.0
-```
-
-También puedes usar:
-```bash
-npm i npm-js-ts-angular-modules-course/introduccion-node-js#v1.0.0
-```
-
-### Enlace simbólico local (npm link)
-Para crear un enlace simbólico entre un paquete local y tu proyecto:
-```bash
-npm link
-```
-
-**¿Para qué sirve npm link?**
-- Permite desarrollar y probar un paquete localmente sin necesidad de publicarlo
-- Crea un enlace simbólico en la carpeta global de npm
-- Evita tener que reinstalar el paquete después de cada cambio
-- Útil durante el desarrollo de librerías
-
-**Uso típico:**
-1. En la carpeta del paquete: `npm link`
-2. En el proyecto que lo usa: `npm link nombre-del-paquete`
-
-Para eliminar el enlace:
-```bash
-npm unlink nombre-del-paquete
-```
-
-### Prueba del paquete con Node.js REPL
-Para probar tu paquete localmente usando la consola interactiva de Node.js:
+## 🚀 Instalación
 
 ```bash
-node
+npm install node-cli-generator-project
 ```
 
-Una vez en la consola de Node.js:
+## 📖 Uso Básico
+
+### Como CLI (Línea de Comandos)
+
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar el CLI
+node index.js
+```
+
+**Ejemplo de funcionamiento:**
+```
+? ¿Qué tipo de proyecto quieres generar? npm-js
+? ¿Cuál es el nombre del proyecto? mi-super-app
+
+CREATE templates/npm-js/index.js (245 bytes)
+CREATE templates/npm-js/package.json (156 bytes)
+CREATE templates/npm-js/README.md (89 bytes)
+
+Instalando las dependencias en /path/mi-super-app
+npm packages installed...
+```
+
+### Como Librería (Require)
+
 ```javascript
-> const lib = require('intro-node-js')
-undefined
-> lib.hola()
-Hola Mundo!!!
-undefined
-> .exit
+const generator = require('node-cli-generator-project');
+
+// Crear proyecto directamente
+generator.createProject('miApp', 'npm-js', { author: 'John Doe' });
+
+// Ejecutar flujo completo
+generator.ejecutar();  // Inicia preguntas y creación
 ```
 
-**Comandos útiles en REPL:**
-- `.help` - Muestra ayuda
-- `.exit` - Sale de la consola
-- `.clear` - Limpia el contexto
-- Ctrl+C (dos veces) - Forzar salida
+## 🗂️ Sistema de Templates
 
-Esta forma es ideal para probar rápidamente las funciones de tu paquete sin necesidad de crear archivos de prueba.
+### Estructura de Templates
+```
+templates/
+├── npm-js/              # Template Node.js básico
+│   ├── index.js          # Archivo principal
+│   ├── package.json      # Configuración con variables
+│   └── README.md         # Documentación
+├── npm-ts/              # Template TypeScript
+│   ├── lib/
+│   │   └── index.ts
+│   ├── test/
+│   │   └── index.ts
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── README.md
+└── react-app/            # Template React (futuro)
+    ├── src/
+    ├── public/
+    └── package.json
+```
 
-### Desinstalación de paquetes
-Para remover un paquete de node_modules:
+### Variables en Templates
+Usa EJS para reemplazar variables dinámicamente:
+
+**Template package.json:**
+```json
+{
+  "name": "<%= projectName %>",
+  "version": "1.0.0",
+  "description": "Proyecto <%= projectName %>",
+  "main": "index.js",
+  "author": "<%= author || 'Anonymous' %>",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  }
+}
+```
+
+## 🧪 Testing
+
 ```bash
-npm uninstall intro-node-js
+# Ejecutar tests
+npm test
+
+# Ver resultados esperados
+✓ Función ok
+✓ Función info  
+✓ Función aviso
+✓ Función error
+✓ No llama al console log
 ```
 
-O también puedes usar:
+## 📦 Publicar en NPM - Paso a Paso
+
+### 1. Preparar el Paquete
 ```bash
-npm un intro-node-js
+# Verificar package.json
+cat package.json
+
+# Limpiar archivos innecesarios
+# (usar .npmignore para excluir)
 ```
 
-## Estructura del Proyecto
-```
-npm-basic/
-├── introduccion-node-js/          # Paquete de ejemplo
-│   ├── package.json              # Configuración del paquete
-│   ├── index.js                  # Archivo principal
-│   └── intro-node-js-1.0.0.tgz   # Paquete comprimido
-├── pruebas/                      # Carpeta de pruebas
-│   ├── package.json              # Dependencias de prueba
-│   └── node_modules/            # Módulos instalados
-└── readme.md                     # Este archivo
+### 2. Autenticación en NPM
+```bash
+# Iniciar sesión
+npm login
+
+# Verificar autenticación
+npm whoami
 ```
 
-## Información del Paquete de Ejemplo
-- **Nombre**: intro-node-js
-- **Versión**: 1.0.0
-- **Descripción**: Módulo Node JS de introducción
-- **Autor**: Anartz Mugika Ledo
-- **Licencia**: MIT
+### 3. Publicar
+```bash
+# Publicar paquete
+npm publish
 
-## Próximos Pasos
-1. Practicar la creación de paquetes locales
-2. Configurar tests con Mocha
-3. Aprender a publicar en NPM
-4. Explorar integración continua
-5. Desarrollar librerías para frameworks específicos
+# Verificar publicación
+npm view node-cli-generator-project
+```
 
-## Referencias Útiles
+### 4. Probar Instalación
+```bash
+# Instalar globalmente para probar
+npm install -g node-cli-generator-project
 
-### Documentación y Recursos
-- **Markdown**: https://markdown.es/ - Guía completa de sintaxis Markdown
+# O instalar en otro proyecto
+npm install node-cli-generator-project
+```
 
-### Ejemplos de Paquetes en NPM
-- **Paquete ejemplo**: https://www.npmjs.com/package/proyecto-1a-matematicas
-- **Versión específica**: https://www.npmjs.com/package/proyecto-1-matematicas/v/1.1.1
+## 🗑️ Eliminar Paquete de NPM
 
-### Repositorios y Releases
-- **Releases en GitHub**: https://github.com/npm-js-ts-angular-modules-course/proyecto-1a-matematicas/releases
+### Opción 1: Eliminar versión específica
+```bash
+npm unpublish node-cli-generator-project@1.0.0
+```
+
+### Opción 2: Eliminar todo el paquete (solo 24h después de publicar)
+```bash
+npm unpublish node-cli-generator-project --force
+```
+
+### Opción 3: Despublicar (mantiene nombre pero no se puede instalar)
+```bash
+npm deprecate node-cli-generator-project@"*" "Este paquete está obsoleto"
+```
+
+**⚠️ Importante:** Solo puedes eliminar paquetes dentro de las primeras 24 horas. Después solo puedes deprecate.
+
+## 📋 Estructura del Proyecto
+
+```
+node-cli-generator-project/
+├── index.js              # CLI principal
+├── utils/
+│   └── templates.js      # Motor de templates
+├── templates/            # Plantillas de proyectos
+│   ├── npm-js/          # Template Node.js
+│   ├── npm-ts/          # Template TypeScript
+│   └── react-app/       # Template React (futuro)
+├── test/
+│   └── index.js          # Tests con Mocha
+├── package.json          # Configuración del paquete
+├── .npmignore           # Archivos a excluir
+└── readme.md           # Esta documentación
+```
+
+## 🔧 Comandos Útiles
+
+### Desarrollo
+```bash
+npm test                 # Ejecutar tests
+npm run test:watch      # Tests en modo watch
+npm link                # Enlace simbólico local
+```
+
+### Publicación
+```bash
+npm version patch        # 1.0.0 → 1.0.1
+npm version minor        # 1.0.0 → 1.1.0  
+npm version major        # 1.0.0 → 2.0.0
+npm publish             # Publicar nueva versión
+```
+
+### Verificación
+```bash
+npm view node-cli-generator-project  # Ver info del paquete
+npm info node-cli-generator-project # Ver detalles completos
+```
+
+## 🎯 Conceptos Aprendidos
+
+### package.json Clave
+```json
+{
+  "name": "node-cli-generator-project",
+  "version": "1.0.0",
+  "description": "CLI para generar proyectos con templates",
+  "main": "index.js",
+  "bin": {
+    "create-project": "./index.js"
+  },
+  "scripts": {
+    "test": "node pruebas/index.js"
+  },
+  "keywords": ["cli", "generator", "templates", "node", "typescript"],
+  "author": "Fernando",
+  "license": "MIT"
+}
+```
+
+### .npmignore Esencial
+```
+test/
+node_modules/
+.idea/
+*.log
+.DS_Store
+ficheros/
+```
+
+### Template Engine con EJS
+```javascript
+// utils/templates.js
+const ejs = require('ejs');
+
+const render = (template, variables) => {
+  return ejs.render(template, variables);
+};
+
+module.exports = { render };
+```
+
+### Testing con Mocha + Chai
+```javascript
+const { expect } = require('chai');
+const sinon = require('sinon');
+
+describe('Test de funciones', () => {
+  beforeEach(() => {
+    sinon.spy(console, 'log');
+  });
+  
+  afterEach(() => {
+    console.log.restore();
+  });
+  
+  it('debe llamar a console.log', () => {
+    generator.ejecutar();
+    expect(console.log.called).to.be.true;
+  });
+});
+```
+
+## 🚨 Errores Comunes y Soluciones
+
+### Error 404 al publicar
+- **Causa**: No autenticado en npm
+- **Solución**: `npm login`
+
+### Error "package already exists"
+- **Causa**: Nombre ya en uso
+- **Solución**: Cambiar nombre en package.json
+
+### Error "cannot unpublish"
+- **Causa**: Pasaron más de 24 horas
+- **Solución**: Usar `npm deprecate` en lugar de unpublish
+
+### Error "Cannot find module './utils/templates'"
+- **Causa**: Archivo utils/templates.js no existe
+- **Solución**: Crear el archivo con el motor de templates
+
+## 📚 Recursos Adicionales
+
+- **Documentación NPM**: https://docs.npmjs.com/
+- **Mocha Testing**: https://mochajs.org/
+- **Chai Assertions**: https://www.chaijs.com/
+- **EJS Templates**: https://ejs.co/
+- **SemVer Versioning**: https://semver.org/
+
+## 🏆 Resumen del Proceso
+
+1. ✅ **Crear CLI funcional**
+2. ✅ **Implementar sistema de templates**
+3. ✅ **Escribir tests automáticos**
+4. ✅ **Configurar package.json**
+5. ✅ **Crear .npmignore**
+6. ✅ **Autenticarse en npm**
+7. ✅ **Publicar paquete**
+8. ✅ **Probar instalación**
+9. ✅ **Gestionar versiones y templates**
 
 ---
-*Curso: NPM. Desarrollo y publicación de librerías en JS, TS, Angular y ReactJS*
+
+**🎓 ¡Felicidades! Ahora sabes crear CLIs profesionales con sistema de templates.**
+
+*Autor: Fernando*  
+*Licencia: MIT*

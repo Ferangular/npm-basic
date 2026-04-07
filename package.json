@@ -1,23 +1,30 @@
 {
-  "name": "intro-node-js",
+  "name": "custom-console-log",
   "version": "1.0.0",
-  "description": "Curso JS introducción",
+  "description": "Log para consola personalizado.",
   "main": "index.js",
   "scripts": {
-    "test": "node pruebas/index.js"
+    "test": "mocha test/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ferangular/npm-basic.git"
   },
   "keywords": [
-    "npm",
-    "nodejs"
+    "console",
+    "log",
+    "custom"
   ],
   "author": "Fer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ferangular/npm-basic/issues"
   },
-  "homepage": "https://github.com/Ferangular/npm-basic#readme"
+  "homepage": "https://github.com/Ferangular/npm-basic#readme",
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "sinon": "^21.0.3",
+    "sinon-chai": "^4.0.1"
+  }
 }

@@ -198,10 +198,62 @@ npm i custom-console-log
 
 ## Uso
 
-Para usar el módulo tenemos que importarlo.
+### Para terminal Node.js (con colores ANSI)
+
+Para usar el módulo en la terminal de Node.js con colores:
+
 ```javascript
-var m = require('custom-console-log');
+var m = require('./index-fixed.js');
 ```
+
+**Ejemplos:**
+```javascript
+m.ok('Los datos se han enviado correctamente');      // Fondo verde
+m.info('Información del proceso');                   // Fondo azul  
+m.aviso('Advertencia: proceso lento');               // Fondo amarillo
+m.error('Error: datos no enviados');                 // Fondo rojo
+```
+
+**Prueba en terminal interactiva:**
+```bash
+node
+> var m = require('./index-fixed.js')
+undefined
+> m.ok('hola')
+hola    // (aparecerá con fondo verde y texto blanco)
+> m.error('error')
+error   // (aparecerá con fondo rojo y texto blanco)
+```
+
+### Para navegador (con estilos CSS)
+
+Para usar en el navegador con estilos CSS avanzados:
+
+```javascript
+var m = require('./index.js');
+```
+
+**Ejemplos:**
+```javascript
+m.ok('Los datos se han enviado correctamente');      // Fondo verde, subrayado, etc.
+m.info('Información del proceso');                   // Fondo azul, subrayado, etc.
+m.aviso('Advertencia: proceso lento');               // Fondo amarillo, subrayado, etc.
+m.error('Error: datos no enviados');                 // Fondo rojo, subrayado, etc.
+```
+
+**Prueba en navegador:**
+1. Abre `demo-browser.html` en el navegador
+2. Abre la consola de desarrollador (F12)
+3. Verás los mensajes con estilos CSS completos
+
+### Diferencia entre versiones
+
+- **`index-fixed.js`**: Usa códigos ANSI para colores en terminal Node.js
+- **`index.js`**: Usa estilos CSS para consolas de navegador
+
+### Nota importante
+Los estilos CSS (`%c%s`) solo funcionan en consolas de navegador, no en la terminal de Node.js. Para terminal usa códigos ANSI como en `index-fixed.js`.
+
 ### Mensaje de confirmación "ok"
 
 ```javascript

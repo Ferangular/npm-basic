@@ -1,21 +1,26 @@
 {
-  "name": "intro-node-js",
+  "name": "cli-file-creator-v10",
   "version": "1.0.0",
-  "description": "Curso JS introducción",
+  "description": "Proyecto CLI para generar ficheros de manera fácil",
   "main": "index.js",
   "scripts": {
-    "test": "node pruebas/index.js"
+    "test": ""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ferangular/npm-basic.git"
   },
   "keywords": [
-    "npm",
-    "nodejs"
+    "rb",
+    "js",
+    "ts",
+    "kt",
+    "java",
+    "cli generator",
+    "crear ficheros"
   ],
   "author": "Fer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ferangular/npm-basic/issues"
   },

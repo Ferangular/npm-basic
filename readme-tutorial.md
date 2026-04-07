@@ -1,4 +1,4 @@
-# FerConsole Log - Tutorial Completo NPM
+# Crear un CLI DE GENERAR PROYECTOS - Tutorial Completo NPM
 
 Librería educativa para aprender a crear, publicar y gestionar paquetes en NPM. Muestra mensajes en colores personalizados para terminal Node.js.
 
@@ -15,7 +15,7 @@ Este proyecto es un tutorial práctico que cubre:
 ## 🚀 Instalación
 
 ```bash
-npm install ferconsole-log
+npm install ...
 ```
 
 ## 📖 Uso Básico

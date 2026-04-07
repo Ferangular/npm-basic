@@ -1,7 +1,7 @@
 {
-  "name": "intro-node-js",
+  "name": "node-cli-generator-project",
   "version": "1.0.0",
-  "description": "Curso JS introducción",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "node pruebas/index.js"
@@ -11,13 +11,25 @@
     "url": "git+https://github.com/Ferangular/npm-basic.git"
   },
   "keywords": [
-    "npm",
-    "nodejs"
+    "rb",
+    "js",
+    "ts",
+    "kt",
+    "java",
+    "cli generator",
+    "crear ficheros"
   ],
   "author": "Fer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ferangular/npm-basic/issues"
   },
-  "homepage": "https://github.com/Ferangular/npm-basic#readme"
+  "homepage": "https://github.com/Ferangular/npm-basic#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "ejs": "^3.1.10",
+    "figlet": "^1.11.0",
+    "inquirer": "^8.2.7",
+    "shelljs": "^0.10.0"
+  }
 }

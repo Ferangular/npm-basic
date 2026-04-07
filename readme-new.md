@@ -203,7 +203,7 @@ npm i custom-console-log
 Para usar el módulo en la terminal de Node.js con colores:
 
 ```javascript
-var m = require('./index-fixed.js');
+var m = require('./index.js');
 ```
 
 **Ejemplos:**
@@ -217,7 +217,7 @@ m.error('Error: datos no enviados');                 // Fondo rojo
 **Prueba en terminal interactiva:**
 ```bash
 node
-> var m = require('./index-fixed.js')
+> var m = require('./index.js')
 undefined
 > m.ok('hola')
 hola    // (aparecerá con fondo verde y texto blanco)
@@ -248,11 +248,11 @@ m.error('Error: datos no enviados');                 // Fondo rojo, subrayado, e
 
 ### Diferencia entre versiones
 
-- **`index-fixed.js`**: Usa códigos ANSI para colores en terminal Node.js
+- **`index.js`**: Usa códigos ANSI para colores en terminal Node.js
 - **`index.js`**: Usa estilos CSS para consolas de navegador
 
 ### Nota importante
-Los estilos CSS (`%c%s`) solo funcionan en consolas de navegador, no en la terminal de Node.js. Para terminal usa códigos ANSI como en `index-fixed.js`.
+Los estilos CSS (`%c%s`) solo funcionan en consolas de navegador, no en la terminal de Node.js. Para terminal usa códigos ANSI como en `index.js`.
 
 ### Mensaje de confirmación "ok"
 

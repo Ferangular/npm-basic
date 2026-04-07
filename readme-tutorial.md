@@ -1,4 +1,4 @@
-# FerConsole Log - Tutorial Completo NPM
+# Crear fichero - Tutorial Completo NPM
 
 Librería educativa para aprender a crear, publicar y gestionar paquetes en NPM. Muestra mensajes en colores personalizados para terminal Node.js.
 
@@ -15,19 +15,44 @@ Este proyecto es un tutorial práctico que cubre:
 ## 🚀 Instalación
 
 ```bash
-npm install ferconsole-log
+npm install cli-file-creator-v10
 ```
 
 ## 📖 Uso Básico
 
-```javascript
-const logger = require('ferconsole-log');
+### Como CLI (Línea de Comandos)
 
-// Mensajes con colores en terminal
-logger.ok('Operación exitosa');      // 🟢 Fondo verde
-logger.info('Información importante'); // 🔵 Fondo azul
-logger.aviso('Advertencia');          // 🟡 Fondo amarillo
-logger.error('Error crítico');        // 🔴 Fondo rojo
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar el CLI
+node index.js
+```
+
+**Ejemplo de funcionamiento:**
+```
+   _   _   _   _   _   _   _     _   _   _   _   _   _   _  
+  / \ / \ / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \ / \ / \
+ ( C | r | e | a | d | o | r ) ( F | i | c | h | e | r | o | s )
+  \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ \_/
+
+? ¿Cómo se va a llamar tu fichero? (sin la extensión) hola
+? ¿Qué extensión tiene tu fichero? .js
+{ FICHERO: 'hola', EXTENSION: 'js' }
+¡Muy bien! Fichero correctamente creado en el directorio C:\cursos\npm-basic/hola.js
+```
+
+### Como Librería (Require)
+
+```javascript
+const creator = require('cli-file-creator-v10');
+
+// Crear fichero directamente
+creator.crearFichero('miArchivo', 'js');  // Crea miArchivo.js
+
+// Ejecutar flujo completo
+creator.ejecutar();  // Inicia preguntas y creación
 ```
 
 ## 🧪 Testing

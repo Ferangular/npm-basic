@@ -1,5 +1,5 @@
 {
-  "name": "custom-console-log",
+  "name": "ferconsole-log",
   "version": "1.0.0",
   "description": "Log para consola personalizado.",
   "main": "index.js",

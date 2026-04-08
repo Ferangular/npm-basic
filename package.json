@@ -1,10 +1,14 @@
 {
-  "name": "intro-node-js",
+  "name": "api-openweathermap-practica",
   "version": "1.0.0",
-  "description": "Curso JS introducción",
-  "main": "index.js",
+  "description": "Acceso a la API de Openweather",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "node pruebas/index.js"
+    "build": "tsc",
+    "test": "mocha",
+    "watch": "tsc -w"
   },
   "repository": {
     "type": "git",
@@ -19,5 +23,16 @@
   "bugs": {
     "url": "https://github.com/Ferangular/npm-basic/issues"
   },
-  "homepage": "https://github.com/Ferangular/npm-basic#readme"
+  "homepage": "https://github.com/Ferangular/npm-basic#readme",
+  "dependencies": {
+    "axios": "1.14.0",
+    "dotenv": "^17.4.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^25.5.2",
+    "chai": "4.5.0",
+    "mocha": "11.7.4",
+    "nock": "13.5.6"
+  }
 }

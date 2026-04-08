@@ -1,224 +1,322 @@
-# FerConsole Log - Tutorial Completo NPM
+# API OpenWeatherMap - Librería TypeScript
 
-Librería educativa para aprender a crear, publicar y gestionar paquetes en NPM. Muestra mensajes en colores personalizados para terminal Node.js.
+Librería TypeScript para acceder a la API de OpenWeatherMap y obtener información del clima.
 
-## 📚 Objetivo Educativo
+## 🚀 Instalación para Usuarios
 
-Este proyecto es un tutorial práctico que cubre:
-- ✅ Creación de librerías Node.js
-- ✅ Testing con Mocha y Chai
-- ✅ Configuración de package.json
-- ✅ Publicación en NPM
-- ✅ Gestión de versiones
-- ✅ Eliminación de paquetes
-
-## 🚀 Instalación
+Instala el paquete desde el registro de NPM:
 
 ```bash
-npm install ferconsole-log
+npm install api-openweathermap-practica
 ```
 
-## 📖 Uso Básico
+O con yarn:
+
+```bash
+yarn add api-openweathermap-practica
+```
+
+## ⚡ Uso Rápido
 
 ```javascript
-const logger = require('ferconsole-log');
+import { ApiService } from 'api-openweathermap-practica';
 
-// Mensajes con colores en terminal
-logger.ok('Operación exitosa');      // 🟢 Fondo verde
-logger.info('Información importante'); // 🔵 Fondo azul
-logger.aviso('Advertencia');          // 🟡 Fondo amarillo
-logger.error('Error crítico');        // 🔴 Fondo rojo
+// Crear instancia con tu API key
+const api = new ApiService('TU_API_KEY');
+
+// Obtener clima de una ciudad
+const clima = await api.buscarPorNombre('Madrid', 'es');
+console.log(`Temperatura: ${clima.main.temp}°C`);
+console.log(`Descripción: ${clima.weather[0].description}`);
 ```
 
-## 🧪 Testing
+## 📋 Requisitos Previos
 
-```bash
-# Ejecutar tests
-npm test
+1. **API Key de OpenWeatherMap**: Obtén una gratuita en [openweathermap.org/api](https://openweathermap.org/api)
+2. **Node.js**: Versión 14 o superior
+3. **Proyecto TypeScript o JavaScript con ES modules**
 
-# Ver resultados esperados
-✓ Función ok
-✓ Función info  
-✓ Función aviso
-✓ Función error
-✓ No llama al console log
+## 🔧 Configuración
+
+```javascript
+import { ApiService } from 'api-openweathermap-practica';
+
+// Crear instancia con tu API key
+const api = new ApiService('TU_API_KEY');
 ```
 
-## 📦 Publicar en NPM - Paso a Paso
+## Métodos Disponibles
 
-### 1. Preparar el Paquete
-```bash
-# Verificar package.json
-cat package.json
+### 1. Buscar por Nombre de Ciudad
 
-# Limpiar archivos innecesarios
-# (usar .npmignore para excluir)
+```javascript
+const clima = await api.buscarPorNombre('Barcelona', 'es');
+console.log(clima);
 ```
 
-### 2. Autenticación en NPM
-```bash
-# Iniciar sesión
-npm login
+### 2. Buscar por Coordenadas Geográficas
 
-# Verificar autenticación
-npm whoami
+```javascript
+const clima = await api.buscarPorLocalizacionGeografica({
+    lat: 40.4168,
+    lon: -3.7038
+});
+console.log(clima);
 ```
 
-### 3. Publicar
-```bash
-# Publicar paquete
-npm publish
+### 3. Buscar por Código Postal
 
-# Verificar publicación
-npm view ferconsole-log
+```javascript
+const clima = await api.buscarPorZipCodigoPostal('08001', 'es');
+console.log(clima);
 ```
 
-### 4. Probar Instalación
-```bash
-# Instalar globalmente para probar
-npm install -g ferconsole-log
+## Ejemplo Completo
 
-# O instalar en otro proyecto
-npm install ferconsole-log
+```javascript
+import { ApiService } from './dist/index.js';
+
+const APIKEY = '3ce5c4bc6efd0a54d73026582a893ff6';
+
+async function probarApi() {
+    console.log('=== Probando API OpenWeatherMap ===\n');
+    
+    const api = new ApiService(APIKEY);
+    
+    try {
+        // 1. Buscar por nombre de ciudad
+        console.log('1. Buscando clima por nombre (Barcelona, España)...');
+        const climaBarcelona = await api.buscarPorNombre('Barcelona', 'es');
+        console.log('Temperatura:', climaBarcelona.main.temp, '°C');
+        console.log('Descripción:', climaBarcelona.weather[0].description);
+        console.log('\n');
+        
+        // 2. Buscar por coordenadas
+        console.log('2. Buscando clima por coordenadas (Madrid)...');
+        const climaMadrid = await api.buscarPorLocalizacionGeografica({
+            lat: 40.4168,
+            lon: -3.7038
+        });
+        console.log('Temperatura:', climaMadrid.main.temp, '°C');
+        console.log('Descripción:', climaMadrid.weather[0].description);
+        console.log('\n');
+        
+        // 3. Buscar por código postal
+        console.log('3. Buscando clima por código postal (08001, Barcelona)...');
+        const climaCP = await api.buscarPorZipCodigoPostal('08001', 'es');
+        console.log('Temperatura:', climaCP.main.temp, '°C');
+        console.log('Descripción:', climaCP.weather[0].description);
+        console.log('\n');
+        
+    } catch (error) {
+        console.error('Error al consultar la API:', error.message);
+    }
+}
+
+probarApi();
 ```
 
-## 🗑️ Eliminar Paquete de NPM
+## Respuesta de la API
 
-### Opción 1: Eliminar versión específica
-```bash
-npm unpublish ferconsole-log@1.0.0
-```
+La librería devuelve un objeto con la siguiente estructura:
 
-### Opción 2: Eliminar todo el paquete (solo 24h después de publicar)
-```bash
-npm unpublish ferconsole-log --force
-```
-
-### Opción 3: Despublicar (mantiene nombre pero no se puede instalar)
-```bash
-npm deprecate ferconsole-log@"*" "Este paquete está obsoleto"
-```
-
-**⚠️ Importante:** Solo puedes eliminar paquetes dentro de las primeras 24 horas. Después solo puedes deprecate.
-
-## 📋 Estructura del Proyecto
-
-```
-ferconsole-log/
-├── index.js              # Código principal
-├── test/
-│   └── index.js          # Tests con Mocha
-├── package.json          # Configuración del paquete
-├── .npmignore           # Archivos a excluir
-└── readme.md           # Esta documentación
-```
-
-## 🔧 Comandos Útiles
-
-### Desarrollo
-```bash
-npm test                 # Ejecutar tests
-npm run test:watch      # Tests en modo watch
-npm link                # Enlace simbólico local
-```
-
-### Publicación
-```bash
-npm version patch        # 1.0.0 → 1.0.1
-npm version minor        # 1.0.0 → 1.1.0  
-npm version major        # 1.0.0 → 2.0.0
-npm publish             # Publicar nueva versión
-```
-
-### Verificación
-```bash
-npm view ferconsole-log  # Ver info del paquete
-npm info ferconsole-log # Ver detalles completos
-```
-
-## 🎯 Conceptos Aprendidos
-
-### package.json Clave
-```json
+```javascript
 {
-  "name": "ferconsole-log",
-  "version": "1.0.0",
-  "description": "Log para consola personalizado",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha test/**/*.js"
+  "coord": { "lon": 2.159, "lat": 41.3888 },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "cielo claro",
+      "icon": "01d"
+    }
+  ],
+  "main": {
+    "temp": 19.51,
+    "feels_like": 18.46,
+    "temp_min": 17.73,
+    "temp_max": 21.21,
+    "pressure": 1022,
+    "humidity": 36
   },
-  "keywords": ["console", "log", "colors"],
-  "author": "Tu Nombre",
-  "license": "MIT"
+  "wind": {
+    "speed": 4.63,
+    "deg": 80
+  },
+  "name": "Barcelona",
+  "cod": 200
 }
 ```
 
-### .npmignore Esencial
-```
-test/
-node_modules/
-.idea/
-*.log
-.DS_Store
-```
+## Configuración Avanzada
 
-### Testing con Mocha + Chai
+### Idioma
+
+Puedes configurar el idioma de las respuestas:
+
 ```javascript
-const { expect } = require('chai');
-const sinon = require('sinon');
-
-describe('Test de funciones', () => {
-  beforeEach(() => {
-    sinon.spy(console, 'log');
-  });
-  
-  afterEach(() => {
-    console.log.restore();
-  });
-  
-  it('debe llamar a console.log', () => {
-    logger.ok('test');
-    expect(console.log.called).to.be.true;
-  });
-});
+const api = new ApiService('TU_API_KEY', 'en'); // Inglés
+const api = new ApiService('TU_API_KEY', 'fr'); // Francés
 ```
 
-## 🚨 Errores Comunes y Soluciones
+### Unidades
 
-### Error 404 al publicar
-- **Causa**: No autenticado en npm
-- **Solución**: `npm login`
+Configura las unidades de temperatura:
 
-### Error "package already exists"
-- **Causa**: Nombre ya en uso
-- **Solución**: Cambiar nombre en package.json
+```javascript
+const api = new ApiService('TU_API_KEY', 'es', 'metric'); // Celsius (por defecto)
+const api = new ApiService('TU_API_KEY', 'es', 'imperial'); // Fahrenheit
+```
 
-### Error "cannot unpublish"
-- **Causa**: Pasaron más de 24 horas
-- **Solución**: Usar `npm deprecate` en lugar de unpublish
+## Desarrollo
 
-## 📚 Recursos Adicionales
+### Compilar el proyecto
 
-- **Documentación NPM**: https://docs.npmjs.com/
-- **Mocha Testing**: https://mochajs.org/
-- **Chai Assertions**: https://www.chaijs.com/
-- **SemVer Versioning**: https://semver.org/
+```bash
+npx tsc
+```
 
-## 🏆 Resumen del Proceso
+### Modo observación
 
-1. ✅ **Crear código funcional**
-2. ✅ **Escribir tests automáticos**
-3. ✅ **Configurar package.json**
-4. ✅ **Crear .npmignore**
-5. ✅ **Autenticarse en npm**
-6. ✅ **Publicar paquete**
-7. ✅ **Probar instalación**
-8. ✅ **Gestionar versiones**
+```bash
+npm run watch
+```
+
+### Ejecutar pruebas
+
+```bash
+npm test
+```
+
+## Estructura del Proyecto
+
+```
+lib/
+  index.ts              # Punto de entrada
+  services/
+    api.service.ts      # Servicio principal
+  interfaces/
+    api.interface.ts    # Tipos TypeScript
+  constants/
+    constants.ts        # URLs de la API
+    lang-codes.ts       # Códigos de idioma
+```
+
+## Licencia
+
+ISC
 
 ---
 
-**🎓 ¡Felicidades! Ahora sabes crear y publicar paquetes NPM profesionalmente.**
+## 🌟 ¿Cómo los usuarios encuentran tu paquete?
 
-*Autor: Fernando*  
-*Licencia: MIT*
+### 1. Búsqueda en NPM
+Los usuarios pueden buscar tu paquete en:
+- **Sitio web**: [npmjs.com](https://www.npmjs.com) → Buscar "api-openweathermap-practica"
+- **CLI**: `npm search api-openweathermap-practica`
+
+### 2. Instalación directa
+```bash
+# Desde el sitio web de NPM
+npm install api-openweathermap-practica
+
+# Ver información del paquete
+npm info api-openweathermap-practica
+
+# Ver versión
+npm view api-openweathermap-practica version
+```
+
+### 3. Ejemplo de proyecto completo
+```javascript
+// app.js - Aplicación de clima del usuario
+import { ApiService } from 'api-openweathermap-practica';
+
+class WeatherDashboard {
+    constructor() {
+        this.api = new ApiService(process.env.OPENWEATHER_API_KEY);
+    }
+
+    async displayWeather(city) {
+        try {
+            const weather = await this.api.buscarPorNombre(city, 'es');
+            
+            console.log(`🌤️  Clima en ${weather.name}`);
+            console.log(`🌡️  Temperatura: ${weather.main.temp}°C`);
+            console.log(`💧 Humedad: ${weather.main.humidity}%`);
+            console.log(`🌬️  Viento: ${weather.wind.speed} m/s`);
+            console.log(`☁️  ${weather.weather[0].description}`);
+            
+            return weather;
+        } catch (error) {
+            console.error('❌ Error:', error.message);
+        }
+    }
+}
+
+// Uso en aplicación real
+const dashboard = new WeatherDashboard();
+dashboard.displayWeather('Barcelona');
+```
+
+### 4. Integración en frameworks
+```javascript
+// React Example
+import React, { useState, useEffect } from 'react';
+import { ApiService } from 'api-openweathermap-practica';
+
+function WeatherComponent({ city }) {
+    const [weather, setWeather] = useState(null);
+    
+    useEffect(() => {
+        const api = new ApiService('your-api-key');
+        api.buscarPorNombre(city).then(setWeather);
+    }, [city]);
+    
+    return weather ? (
+        <div>
+            <h3>{weather.name}</h3>
+            <p>{weather.main.temp}°C - {weather.weather[0].description}</p>
+        </div>
+    ) : 'Cargando...';
+}
+```
+
+### 5. Documentación que verán los usuarios
+Cuando publiquen, los usuarios verán en npmjs.com:
+- 📖 **README completo** (este archivo)
+- 📦 **Versión y tamaño**
+- ⬇️ **Comandos de instalación**
+- 📊 **Estadísticas de descarga**
+- 🔗 **Dependencias**
+- 📅 **Fecha de publicación**
+
+### 6. Actualizaciones
+```bash
+# Usuarios verifican actualizaciones
+npm outdated api-openweathermap-practica
+
+# Actualizan a la última versión
+npm update api-openweathermap-practica
+
+# Instalan versión específica
+npm install api-openweathermap-practica@1.1.0
+```
+
+---
+
+## 📝 Para Desarrolladores (Tú)
+
+### Publicar una nueva versión
+```bash
+# 1. Actualizar versión en package.json
+npm version patch  # 1.0.0 → 1.0.1
+npm version minor  # 1.0.0 → 1.1.0
+npm version major  # 1.0.0 → 2.0.0
+
+# 2. Publicar
+npm publish
+
+# 3. Los usuarios reciben la actualización con:
+npm update api-openweathermap-practica
+```

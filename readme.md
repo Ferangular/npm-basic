@@ -161,8 +161,136 @@ npm-basic/
 - **Nombre**: intro-node-js
 - **Versión**: 1.0.0
 - **Descripción**: Módulo Node JS de introducción
-- **Autor**: Anartz Mugika Ledo
+- **Autor**: 
 - **Licencia**: MIT
+
+## Uso del Archivo de Pruebas - Tutorial Educativo
+
+### 📁 ¿Qué es el archivo `pruebas/index.js`?
+
+Este archivo es tu **laboratorio de pruebas** donde puedes verificar que tu librería funciona correctamente antes de publicarla. Es una práctica fundamental en el desarrollo de software.
+
+### 🎯 Objetivo del Archivo de Pruebas
+
+El archivo `pruebas/index.js` te permite:
+- **Validar funcionalidad**: Comprobar que cada función trabaja como esperas
+- **Detectar errores**: Encontrar problemas antes de que lleguen a los usuarios
+- **Documentar uso**: Servir como ejemplo de cómo se usa tu librería
+- **Asegurar calidad**: Garantizar que las nuevas actualizaciones no rompen lo existente
+
+### 🔍 Estructura del Archivo de Pruebas
+
+```javascript
+// Importamos las funciones que queremos probar
+import { esPar, operacion } from '../dist/index.js';
+
+// Sección 1: Pruebas de función esPar
+console.log('=== Probando función esPar ===');
+console.log('¿Es 8 par?', esPar(8));    // true
+console.log('¿Es 7 par?', esPar(7));    // false
+console.log('¿Es 0 par?', esPar(0));    // true
+
+// Sección 2: Pruebas de función operacion
+console.log('\n=== Probando función operacion ===');
+console.log('5 + 3 =', operacion('+', 5, 3));   // 8
+console.log('10 - 4 =', operacion('-', 10, 4)); // 6
+console.log('3 * 7 =', operacion('*', 3, 7));   // 21
+console.log('15 / 3 =', operacion('/', 15, 3)); // 5
+console.log('Operación inválida:', operacion('x', 5, 3)); // undefined
+```
+
+### 🚀 ¿Cómo ejecutar las pruebas?
+
+**Paso 1: Asegúrate de tener el código compilado**
+```bash
+npx tsc
+```
+*Esto convierte tu TypeScript (`lib/index.ts`) a JavaScript (`dist/index.js`)*
+
+**Paso 2: Ejecuta el archivo de pruebas**
+```bash
+node pruebas/index.js
+```
+
+**Paso 3: Observa los resultados**
+Deberías ver algo como:
+```
+=== Probando función esPar ===
+¿Es 8 par? true
+¿Es 7 par? false
+¿Es 0 par? true
+
+=== Probando función operacion ===
+5 + 3 = 8
+10 - 4 = 6
+3 * 7 = 21
+15 / 3 = 5
+Operación inválida: undefined
+```
+
+### 📚 Conceptos Educativos Clave
+
+#### 1. **Importación de Módulos**
+```javascript
+import { esPar, operacion } from '../dist/index.js';
+```
+- `import`: Palabra clave para traer código de otros archivos
+- `{ esPar, operacion }`: Funciones específicas que queremos usar
+- `from '../dist/index.js'`: Ruta al archivo compilado
+
+#### 2. **Pruebas por Consola**
+```javascript
+console.log('¿Es 8 par?', esPar(8));
+```
+- `console.log()`: Función para mostrar información en la terminal
+- Combinamos texto descriptivo con el resultado de la función
+- Esto nos ayuda a entender qué estamos probando
+
+#### 3. **Casos de Prueba**
+Para cada función probamos:
+- **Casos positivos**: Entradas que deberían funcionar (8, 0 para esPar)
+- **Casos negativos**: Entradas que deberían fallar (7 para esPar)
+- **Casos límite**: Valores extremos (0 para esPar)
+- **Casos inválidos**: Entradas incorrectas ('x' para operacion)
+
+### 🛠️ Buenas Prácticas de Testing
+
+#### ✅ Qué hacer:
+- **Prueba cada función**: Asegúrate que todas tus funciones sean probadas
+- **Usa datos variados**: Prueba con números positivos, negativos, cero
+- **Sé descriptivo**: Usa `console.log()` que explique qué estás probando
+- **Prueba errores**: Verifica cómo se comporta con entradas inválidas
+
+#### ❌ Qué evitar:
+- **No asumas resultados**: Siempre verifica el output real
+- **No pruebes solo un caso**: Un solo caso no garantiza que funcione siempre
+- **No ignores errores**: Si algo falla, investiga por qué
+
+### 🔄 Flujo de Trabajo Recomendado
+
+1. **Escribe código** en `lib/index.ts`
+2. **Compila** con `npx tsc`
+3. **Escribe pruebas** en `pruebas/index.js`
+4. **Ejecuta pruebas** con `node pruebas/index.js`
+5. **Corrige errores** si los hay
+6. **Repite** hasta que todas las pruebas pasen
+
+### 🎓 ¿Por qué es importante esto?
+
+- **Calidad**: Aseguras que tu librería funciona correctamente
+- **Confianza**: Sabes que no romperás funcionalidad existente
+- **Documentación**: Las pruebas sirven como ejemplos de uso
+- **Mantenimiento**: Facilita encontrar y corregir errores en el futuro
+
+### 🚀 Siguiente Nivel
+
+Cuando quieras avanzar, puedes explorar:
+- **Frameworks de testing**: Jest, Mocha, Chai
+- **Pruebas automatizadas**: Integración con CI/CD
+- **Coverage**: Medir qué porcentaje de tu código está siendo probado
+- **Tests asíncronos**: Para funciones que trabajan con promesas o callbacks
+
+---
 
 ## Próximos Pasos
 1. Practicar la creación de paquetes locales
